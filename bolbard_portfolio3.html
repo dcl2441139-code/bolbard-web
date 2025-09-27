@@ -53,15 +53,16 @@
         }
 
         .logo-icon {
-            width: 40px;
-            height: 50px;
+            width: 50px;
+            height: 40px;
             position: relative;
         }
 
-        .flame-svg {
+        .logo-img {
             width: 100%;
             height: 100%;
-            filter: drop-shadow(0 2px 8px rgba(255, 140, 0, 0.3));
+            object-fit: contain;
+            filter: drop-shadow(0 2px 8px rgba(218, 165, 32, 0.4));
         }
 
         .logo-text {
@@ -734,39 +735,7 @@
         <div class="container">
             <div class="logo">
                 <div class="logo-icon">
-                    <svg class="flame-svg" viewBox="0 0 400 600" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <linearGradient id="flameGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color:#FF8C00;stop-opacity:1" />
-                                <stop offset="50%" style="stop-color:#FF6600;stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:#FF4500;stop-opacity:1" />
-                            </linearGradient>
-                        </defs>
-                        <!-- Main flame shape -->
-                        <path d="M 200 50 
-                                 C 250 30, 320 80, 350 150
-                                 C 380 220, 360 290, 320 350
-                                 C 280 410, 220 450, 200 480
-                                 C 180 520, 140 550, 100 570
-                                 C 60 550, 20 520, 10 480
-                                 C 0 440, 20 400, 50 360
-                                 C 80 320, 120 280, 140 240
-                                 C 160 200, 180 160, 190 120
-                                 C 195 90, 198 70, 200 50 Z" 
-                              fill="url(#flameGradient)" />
-                        
-                        <!-- Inner flame -->
-                        <path d="M 280 200
-                                 C 310 220, 330 260, 340 300
-                                 C 350 340, 340 380, 320 410
-                                 C 300 440, 270 460, 240 470
-                                 C 210 480, 180 470, 160 450
-                                 C 140 430, 130 400, 140 370
-                                 C 150 340, 170 310, 190 290
-                                 C 210 270, 240 250, 270 240
-                                 C 275 220, 278 210, 280 200 Z" 
-                              fill="white" />
-                    </svg>
+                    <img src="logo.gif" alt="BOLBARD Logo" class="logo-img">
                 </div>
                 <div class="logo-text">BOLBARD</div>
             </div>

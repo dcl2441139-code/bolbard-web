@@ -1,0 +1,21 @@
+{
+  "name": "bolbard-portfolio",
+  "version": "1.0.0",
+  "description": "BOLBARD - The Global Risk and Trade Integrity Partner Portfolio Website",
+  "main": "bolbard_portfolio3.html",
+  "scripts": {
+    "start": "python3 -m http.server 3000",
+    "build": "echo 'Build completed - static HTML project'",
+    "dev": "python3 -m http.server 3000"
+  },
+  "keywords": [
+    "trading",
+    "compliance",
+    "portfolio",
+    "bolbard"
+  ],
+  "author": "BOLBARD FZE LLC",
+  "license": "ISC",
+  "devDependencies": {},
+  "dependencies": {}
+}
