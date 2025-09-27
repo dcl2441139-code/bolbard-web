@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOLBARD - The Global Risk and Trade Integrity Partner</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #0f0f0f;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 15, 15, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(218, 165, 32, 0.3);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 50px;
+            position: relative;
+        }
+
+        .flame-svg {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 2px 8px rgba(255, 140, 0, 0.3));
+        }
+
+        .logo-text {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #DAA520, #FFD700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #DAA520;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #DAA520;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, rgba(15, 15, 15, 0.9), rgba(218, 165, 32, 0.1)),
+                        radial-gradient(circle at 20% 50%, rgba(218, 165, 32, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(255, 215, 0, 0.1) 0%, transparent 50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="rgba(218,165,32,0.1)"/></svg>') repeat;
+            background-size: 100px 100px;
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(-100px, -100px); }
+        }
+
+        .hero-content {
+            z-index: 2;
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #fff, #DAA520);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 20px rgba(218, 165, 32, 0.3); }
+            to { text-shadow: 0 0 30px rgba(218, 165, 32, 0.5), 0 0 40px rgba(218, 165, 32, 0.3); }
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            color: #ccc;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #DAA520, #FFD700);
+            color: #000;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 10px 30px rgba(218, 165, 32, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(218, 165, 32, 0.4);
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 5rem 0;
+            background: #1a1a1a;
+        }
+
+        .section:nth-child(even) {
+            background: #0f0f0f;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, #DAA520, #FFD700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-content {
+            color: #ccc;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: rgba(26, 26, 26, 0.8);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(218, 165, 32, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(218, 165, 32, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .service-card:hover::before {
+            left: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: #DAA520;
+            box-shadow: 0 20px 40px rgba(218, 165, 32, 0.2);
+        }
+
+        .service-card h3 {
+            color: #DAA520;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .service-icon {
+            width: 32px;
+            height: 32px;
+            fill: #DAA520;
+            flex-shrink: 0;
+        }
+
+        .service-card p {
+            color: #ccc;
+            line-height: 1.6;
+        }
+
+        /* Expertise Section */
+        .expertise-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .expertise-item {
+            background: rgba(218, 165, 32, 0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid #DAA520;
+            color: #fff;
+            transition: all 0.3s ease;
+        }
+
+        .expertise-item h4 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            color: #DAA520;
+        }
+
+        .expertise-icon {
+            width: 24px;
+            height: 24px;
+            fill: #DAA520;
+            flex-shrink: 0;
+        }
+
+        .commitment-card {
+            padding: 1.5rem;
+            background: rgba(218, 165, 32, 0.1);
+            border-radius: 10px;
+        }
+
+        .commitment-card h4 {
+            color: #DAA520;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .commitment-icon {
+            width: 28px;
+            height: 28px;
+            fill: #DAA520;
+            flex-shrink: 0;
+        }
+
+        .expertise-item:hover {
+            background: rgba(218, 165, 32, 0.2);
+            transform: translateX(10px);
+        }
+
+        /* Stats Section */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        .stat-item {
+            color: #fff;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #DAA520, #FFD700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: #ccc;
+            margin-top: 0.5rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, #1a1a1a, #0f0f0f);
+            padding: 5rem 0;
+            text-align: center;
+        }
+
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact h2 {
+            color: #DAA520;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact p {
+            color: #ccc;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Form Styles */
+        .contact-form {
+            max-width: 800px;
+            margin: 3rem auto 0;
+            background: rgba(26, 26, 26, 0.8);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 1px solid rgba(218, 165, 32, 0.3);
+            backdrop-filter: blur(10px);
+            text-align: left;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-label {
+            color: #DAA520;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .form-input,
+        .form-select,
+        .form-textarea {
+            padding: 1rem;
+            border: 1px solid rgba(218, 165, 32, 0.3);
+            border-radius: 8px;
+            background: rgba(15, 15, 15, 0.8);
+            color: #fff;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: #DAA520;
+            box-shadow: 0 0 10px rgba(218, 165, 32, 0.3);
+        }
+
+        .form-input::placeholder,
+        .form-textarea::placeholder {
+            color: #888;
+        }
+
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-select {
+            cursor: pointer;
+        }
+
+        .form-select option {
+            background: #1a1a1a;
+            color: #fff;
+        }
+
+        .form-submit {
+            background: linear-gradient(135deg, #DAA520, #FFD700);
+            color: #000;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(218, 165, 32, 0.3);
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        .form-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(218, 165, 32, 0.4);
+        }
+
+        .form-submit:active {
+            transform: translateY(-1px);
+        }
+
+        /* Responsive form */
+        @media (max-width: 768px) {
+            .contact-form {
+                padding: 2rem 1.5rem;
+                margin: 2rem auto 0;
+            }
+            
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Footer */
+        footer {
+            background: #000;
+            color: #ccc;
+            text-align: center;
+            padding: 2rem 0;
+            border-top: 1px solid rgba(218, 165, 32, 0.3);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .logo-icon {
+                width: 30px;
+                height: 38px;
+            }
+            
+            .logo-text {
+                font-size: 1.5rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <svg class="flame-svg" viewBox="0 0 400 600" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="flameGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#FF8C00;stop-opacity:1" />
+                                <stop offset="50%" style="stop-color:#FF6600;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#FF4500;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <!-- Main flame shape -->
+                        <path d="M 200 50 
+                                 C 250 30, 320 80, 350 150
+                                 C 380 220, 360 290, 320 350
+                                 C 280 410, 220 450, 200 480
+                                 C 180 520, 140 550, 100 570
+                                 C 60 550, 20 520, 10 480
+                                 C 0 440, 20 400, 50 360
+                                 C 80 320, 120 280, 140 240
+                                 C 160 200, 180 160, 190 120
+                                 C 195 90, 198 70, 200 50 Z" 
+                              fill="url(#flameGradient)" />
+                        
+                        <!-- Inner flame -->
+                        <path d="M 280 200
+                                 C 310 220, 330 260, 340 300
+                                 C 350 340, 340 380, 320 410
+                                 C 300 440, 270 460, 240 470
+                                 C 210 480, 180 470, 160 450
+                                 C 140 430, 130 400, 140 370
+                                 C 150 340, 170 310, 190 290
+                                 C 210 270, 240 250, 270 240
+                                 C 275 220, 278 210, 280 200 Z" 
+                              fill="white" />
+                    </svg>
+                </div>
+                <div class="logo-text">BOLBARD</div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#expertise">Expertise</a></li>
+                <li><a href="#compliance">Compliance</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>BOLBARD</h1>
+            <p class="hero-subtitle">The Global Risk and Trade Integrity Partner</p>
+            <p style="font-size: 1.1rem; margin-bottom: 2rem; color: #DAA520;">Navigating High-Value Trade in a High-Compliance World</p>
+            <a href="#contact" class="cta-button">Secure Your Supply Chain</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section">
+        <div class="container">
+            <h2 class="section-title">Integrated Compliance Brokerage</h2>
+            <div class="section-content">
+                <p>BOLBARD is your Integrated Compliance Brokerage, specializing in the global wholesale and offshore trading of crude oil, refined products, unworked gold, and precious metals. We transform complex regulatory challenges into opportunities for secure and accountable market access.</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>
+                        <svg class="service-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 3C10.9 3 10 3.9 10 5C10 6.1 10.9 7 12 7C13.1 7 14 6.1 14 5C14 3.9 13.1 3 12 3M21 14V20C21 21.1 20.1 22 19 22H5C3.9 22 3 21.1 3 20V14H21M20.5 10H18V8.5C18 7.1 16.9 6 15.5 6H8.5C7.1 6 6 7.1 6 8.5V10H3.5C2.7 10 2 10.7 2 11.5V13H22V11.5C22 10.7 21.3 10 20.5 10Z"/>
+                        </svg>
+                        Energy Trading
+                    </h3>
+                    <p>Wholesale crude oil trading (Import & Export) and offshore refined oil product trading with complete UAE tax regime compliance and VAT proficiency.</p>
+                </div>
+                
+                <div class="service-card">
+                    <h3>
+                        <svg class="service-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 12C5 8.13 8.13 5 12 5S19 8.13 19 12C19 15.87 15.87 19 12 19S5 15.87 5 12M12 7C9.24 7 7 9.24 7 12S9.24 17 12 17 17 14.76 17 12 14.76 7 12 7M12 9C13.66 9 15 10.34 15 12S13.66 15 12 15 9 13.66 9 12 10.34 9 12 9M15.5 2L17.92 6.84L23 6L20.08 10.16L22 15L16.92 14.16L14.5 19L12.08 14.16L7 15L9.92 10.84L8 6L13.08 6.84L15.5 2Z"/>
+                        </svg>
+                        Precious Metals
+                    </h3>
+                    <p>Wholesale trading of unworked gold and precious metals with strict AML compliance, supply chain provenance, and traceability measures.</p>
+                </div>
+                
+                <div class="service-card">
+                    <h3>
+                        <svg class="service-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3 13.11L12 21L21 13.11V15.87C21 16.5 20.5 17 19.87 17H17V21H15V17H9V21H7V17H4.13C3.5 17 3 16.5 3 15.87V13.11M12 3L1 10V12H23V10L12 3M5 12V15H19V12H5Z"/>
+                        </svg>
+                        Maritime Services
+                    </h3>
+                    <p>Transportation services brokerage with expertise in international maritime law, MARPOL compliance, and comprehensive logistics management.</p>
+                </div>
+                
+                <div class="service-card">
+                    <h3>
+                        <svg class="service-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 6H23V18H5V6M14 9C12.89 9 12 9.89 12 11S12.89 13 14 13 16 12.11 16 11 15.11 9 14 9M20 9C18.89 9 18 9.89 18 11S18.89 13 20 13 22 12.11 22 11 21.11 9 20 9M8 9C6.89 9 6 9.89 6 11S6.89 13 8 13 10 12.11 10 11 9.11 9 8 9M1 4V6H3V20C3 21.11 3.89 22 5 22H19C20.11 22 21 21.11 21 20V6H23V4H1Z"/>
+                        </svg>
+                        Banking Consultation
+                    </h3>
+                    <p>Financial system compliance, credit risk analysis, and commercial lending practices with CBCA® and FRM certifications.</p>
+                </div>
+                
+                <div class="service-card">
+                    <h3>
+                        <svg class="service-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 1L3 5V11C3 16.55 6.84 21.74 12 23C17.16 21.74 21 16.55 21 11V5L12 1M10 17L6 13L7.41 11.59L10 14.17L16.59 7.58L18 9L10 17Z"/>
+                        </svg>
+                        Insurance Advisory
+                    </h3>
+                    <p>Risk quantification, Solvency II compliance, and SM&CR governance frameworks ensuring financial soundness and accountability.</p>
+                </div>
+                
+                <div class="service-card">
+                    <h3>
+                        <svg class="service-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16 6L18.29 8.29L13.41 13.17L9.41 9.17L2 16.59L3.41 18L9.41 12L13.41 16L19.71 9.71L22 12V6H16Z"/>
+                        </svg>
+                        General Trading
+                    </h3>
+                    <p>Comprehensive trading services across multiple commodities with end-to-end risk mitigation and regulatory compliance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expertise Section -->
+    <section id="expertise" class="section">
+        <div class="container">
+            <h2 class="section-title">Core Trading Expertise</h2>
+            <div class="expertise-list">
+                <div class="expertise-item">
+                    <h4>
+                        <svg class="expertise-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 1L3 5V11C3 16.55 6.84 21.74 12 23C17.16 21.74 21 16.55 21 11V5L12 1M12 7C13.66 7 15 8.34 15 10C15 11.66 13.66 13 12 13C10.34 13 9 11.66 9 10C9 8.34 10.34 7 12 7M18 19H6V17.5C6 16.12 7.12 15 8.5 15H15.5C16.88 15 18 16.12 18 17.5V19Z"/>
+                        </svg>
+                        AML & DNFBPs Compliance
+                    </h4>
+                    <p>Rigorous Anti-Money Laundering architecture with mandatory KYC checks and cash transaction restrictions.</p>
+                </div>
+                
+                <div class="expertise-item">
+                    <h4>
+                        <svg class="expertise-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L13.09 8.26L22 9L16 14.74L17.18 21.02L12 17.77L6.82 21.02L8 14.74L2 9L10.91 8.26L12 2M9 11V13H15V11H9M10 14V16H14V14H10Z"/>
+                        </svg>
+                        UAE Regulatory Mastery
+                    </h4>
+                    <p>Full adherence to UAE ministerial rules, VAT compliance, and Domestic Reverse Charge Mechanism expertise.</p>
+                </div>
+                
+                <div class="expertise-item">
+                    <h4>
+                        <svg class="expertise-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10 17L6 13L7.41 11.59L10 14.17L16.59 7.58L18 9M12 2C13.1 2 14 2.9 14 4V6H10V4C10 2.9 10.9 2 12 2M21 6V8H19L18 23H6L5 8H3V6H21Z"/>
+                        </svg>
+                        Supply Chain Provenance
+                    </h4>
+                    <p>Strict oversight and traceability measures preventing sanctions, reputational harm, and criminal liability.</p>
+                </div>
+                
+                <div class="expertise-item">
+                    <h4>
+                        <svg class="expertise-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7 15H9C9 16.08 10.37 17 12 17C13.63 17 15 16.08 15 15C15 13.9 13.96 13.5 11.76 12.97C9.64 12.44 7 11.78 7 9C7 7.21 8.47 5.69 10.5 5.18V3H13.5V5.18C15.53 5.69 17 7.21 17 9H15C15 7.92 13.63 7 12 7C10.37 7 9 7.92 9 9C9 10.1 10.04 10.5 12.24 11.03C14.36 11.56 17 12.22 17 15C17 16.79 15.53 18.31 13.5 18.82V21H10.5V18.82C8.47 18.31 7 16.79 7 15Z"/>
+                        </svg>
+                        Corporate Tax Optimization
+                    </h4>
+                    <p>UAE FZE navigation with 0% CT rate qualification for Qualifying Free Zone Persons (QFZPs).</p>
+                </div>
+            </div>
+
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Regulatory Compliance</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Risk Monitoring</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">5M+</div>
+                    <div class="stat-label">Max UAE Penalty Protection</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">0%</div>
+                    <div class="stat-label">CT Rate Qualification</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Compliance Section -->
+    <section id="compliance" class="section">
+        <div class="container">
+            <h2 class="section-title">High-Compliance Commodity Trading</h2>
+            <div class="section-content">
+                <p>The global movement of high-value commodities is governed by strict legal frameworks. We specialize in sensitive products that require specialized diligence, ensuring our clients maintain unrestricted market access.</p>
+                
+                <div style="margin-top: 3rem;">
+                    <h3 style="color: #DAA520; font-size: 1.5rem; margin-bottom: 1rem;">Our Commitment to Integrity</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 2rem;">
+                        <div class="commitment-card">
+                            <h4>
+                                <svg class="commitment-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12S6.48 22 12 22 22 17.52 22 12 17.52 2 12 2M12 4C16.41 4 20 7.59 20 12S16.41 20 12 20 4 16.41 4 12 7.59 4 12 4M12 6C8.69 6 6 8.69 6 12S8.69 18 12 18 18 15.31 18 12 15.31 6 12 6M12 8C14.21 8 16 9.79 16 12S14.21 16 12 16 8 14.21 8 12 9.79 8 12 8M12 10C10.9 10 10 10.9 10 12S10.9 14 12 14 14 13.1 14 12 13.1 10 12 10Z"/>
+                                </svg>
+                                Accountability
+                            </h4>
+                            <p>Clear responsibility for senior staff, reflecting modern conduct regimes like SM&CR.</p>
+                        </div>
+                        <div class="commitment-card">
+                            <h4>
+                                <svg class="commitment-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M21 7L9 19L3.5 13.5L4.91 12.09L9 16.17L19.59 5.59L21 7M12 2C17.52 2 22 6.48 22 12S17.52 22 12 22S2 17.52 2 12S6.48 2 12 2M12 20C16.42 20 20 16.42 20 12S16.42 4 12 4S4 7.58 4 12S7.58 20 12 20Z"/>
+                                </svg>
+                                Due Diligence
+                            </h4>
+                            <p>Transparent documentation and robust adherence to norms protecting from regulatory risk.</p>
+                        </div>
+                        <div class="commitment-card">
+                            <h4>
+                                <svg class="commitment-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 2L13.5 7.5H19L15 11L16.5 16.5L12 13.5L7.5 16.5L9 11L5 7.5H10.5L12 2M12 6.76L11.32 8.5H9.5L10.82 9.5L10.14 11.24L12 10.26L13.86 11.24L13.18 9.5L14.5 8.5H12.68L12 6.76Z"/>
+                                </svg>
+                                Market Access
+                            </h4>
+                            <p>Maintaining firm position within legitimate financial systems and reputable markets.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="contact-content">
+                <h2>Ready to Engage?</h2>
+                <p>Partner with BOLBARD for high-value trade executed with unyielding integrity and regulatory expertise.</p>
+                <p style="color: #DAA520; font-weight: bold; font-size: 1.1rem;">Consult Our Compliance Experts Today</p>
+            </div>
+
+            <form class="contact-form" id="contactForm">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label" for="firstName">First Name *</label>
+                        <input type="text" id="firstName" name="firstName" class="form-input" required placeholder="Enter your first name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="lastName">Last Name *</label>
+                        <input type="text" id="lastName" name="lastName" class="form-input" required placeholder="Enter your last name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" class="form-input" required placeholder="Enter your business email">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" class="form-input" placeholder="Enter your phone number">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="company">Company *</label>
+                        <input type="text" id="company" name="company" class="form-input" required placeholder="Enter your company name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="position">Position/Title</label>
+                        <input type="text" id="position" name="position" class="form-input" placeholder="Enter your job title">
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <label class="form-label" for="serviceInterest">Service Interest *</label>
+                        <select id="serviceInterest" name="serviceInterest" class="form-select" required>
+                            <option value="">Select your primary interest</option>
+                            <option value="crude-oil">Crude Oil Trading</option>
+                            <option value="refined-products">Refined Oil Products</option>
+                            <option value="precious-metals">Gold & Precious Metals</option>
+                            <option value="maritime">Maritime & Logistics</option>
+                            <option value="banking">Banking Consultation</option>
+                            <option value="insurance">Insurance Advisory</option>
+                            <option value="compliance">Regulatory Compliance</option>
+                            <option value="general">General Trading Services</option>
+                            <option value="multiple">Multiple Services</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <label class="form-label" for="tradingVolume">Expected Trading Volume</label>
+                        <select id="tradingVolume" name="tradingVolume" class="form-select">
+                            <option value="">Select volume range</option>
+                            <option value="under-1m">Under $1M</option>
+                            <option value="1m-10m">$1M - $10M</option>
+                            <option value="10m-50m">$10M - $50M</option>
+                            <option value="50m-100m">$50M - $100M</option>
+                            <option value="over-100m">Over $100M</option>
+                            <option value="confidential">Prefer to discuss confidentially</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <label class="form-label" for="urgency">Timeline</label>
+                        <select id="urgency" name="urgency" class="form-select">
+                            <option value="">Select timeline</option>
+                            <option value="immediate">Immediate consultation needed</option>
+                            <option value="1-2-weeks">Within 1-2 weeks</option>
+                            <option value="1-month">Within 1 month</option>
+                            <option value="1-3-months">1-3 months</option>
+                            <option value="exploratory">Exploratory discussion</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <label class="form-label" for="message">Message *</label>
+                        <textarea id="message" name="message" class="form-textarea" required placeholder="Please describe your specific compliance needs, trading requirements, or any questions you have about our services. Include details about your current regulatory challenges or market access requirements."></textarea>
+                    </div>
+                </div>
+                
+                <button type="submit" class="form-submit">Submit Consultation Request</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 BOLBARD FZE LLC. All rights reserved. | Free Zone Establishment, UAE</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navigation background opacity on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(15, 15, 15, 0.98)';
+            } else {
+                nav.style.background = 'rgba(15, 15, 15, 0.95)';
+            }
+        });
+
+        // Animate stats on scroll
+        const animateStats = () => {
+            const stats = document.querySelectorAll('.stat-number');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const target = entry.target;
+                        const finalValue = target.textContent;
+                        target.style.opacity = '1';
+                        target.style.transform = 'scale(1)';
+                    }
+                });
+            });
+
+            stats.forEach(stat => {
+                stat.style.opacity = '0';
+                stat.style.transform = 'scale(0.5)';
+                stat.style.transition = 'all 0.6s ease';
+                observer.observe(stat);
+            });
+        };
+
+        // Service cards hover effect enhancement
+        const enhanceServiceCards = () => {
+            const cards = document.querySelectorAll('.service-card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    cards.forEach(otherCard => {
+                        if (otherCard !== card) {
+                            otherCard.style.opacity = '0.7';
+                        }
+                    });
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    cards.forEach(otherCard => {
+                        otherCard.style.opacity = '1';
+                    });
+                });
+            });
+        };
+
+        // Form submission handling
+        const handleFormSubmit = () => {
+            const form = document.getElementById('contactForm');
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form data
+                const formData = new FormData(form);
+                const data = Object.fromEntries(formData);
+                
+                // Simple validation
+                if (!data.firstName || !data.lastName || !data.email || !data.company || !data.serviceInterest || !data.message) {
+                    alert('Please fill in all required fields.');
+                    return;
+                }
+                
+                // Simulate form submission
+                const submitButton = form.querySelector('.form-submit');
+                const originalText = submitButton.textContent;
+                
+                submitButton.textContent = 'Submitting...';
+                submitButton.disabled = true;
+                
+                setTimeout(() => {
+                    alert('Thank you for your interest! Our compliance experts will contact you within 24 hours to discuss your requirements.');
+                    form.reset();
+                    submitButton.textContent = originalText;
+                    submitButton.disabled = false;
+                }, 2000);
+            });
+        };
+
+        // Initialize animations and form
+        document.addEventListener('DOMContentLoaded', () => {
+            animateStats();
+            enhanceServiceCards();
+            handleFormSubmit();
+        });
+    </script>
+</body>
+</html>
